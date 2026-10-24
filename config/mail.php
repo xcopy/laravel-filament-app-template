@@ -71,7 +71,7 @@ return [
         ],
 
         'log' => [
-            'transport' => 'log',
+            'transport' => env('MAIL_LOG_TRANSPORT'),
             'channel' => env('MAIL_LOG_CHANNEL'),
         ],
 
