@@ -10,6 +10,8 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 
+// __('User')
+// __('Users')
 class UserResource extends Resource
 {
     protected static ?string $model = User::class;

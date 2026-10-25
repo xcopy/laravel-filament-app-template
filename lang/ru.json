@@ -1,0 +1,23 @@
+{
+    "2FA": "2FA",
+    "Access Control": "Контроль доступа",
+    "Active": "Активный",
+    "Administration": "Администрация",
+    "Created At": "Когда создано",
+    "Created By": "Кем создано",
+    "Deleted At": "Когда удалено",
+    "Deleted By": "Кем удалено",
+    "Email": "Email",
+    "Email Verified": "Email подтвержден",
+    "Export to Excel": "Экспорт в Excel",
+    "First Name": "Имя",
+    "First name": "First name",
+    "Last Name": "Фамилия",
+    "Last name": "Last name",
+    "Maximum length is 200 characters.": "Максимальная длина — 200 символов.",
+    "The :attribute may only contain letters, spaces, apostrophes, periods, and hyphens.": "Поле :attribute может содержать только буквы, пробелы, апострофы, точки и дефисы.",
+    "Updated At": "Когда обновлено",
+    "Updated By": "Кем обновлено",
+    "User": "Пользователь",
+    "Users": "Пользователи"
+}
