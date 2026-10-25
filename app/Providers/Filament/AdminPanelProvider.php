@@ -4,6 +4,7 @@ namespace App\Providers\Filament;
 
 use App\Filament\Pages\Auth\EditProfile;
 use App\Filament\Pages\Auth\Login;
+use App\Filament\Pages\Auth\RequestPasswordReset;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -32,6 +33,7 @@ class AdminPanelProvider extends PanelProvider
             ->profile(EditProfile::class)
             ->emailChangeVerification()
             ->emailVerification()
+            ->passwordReset(RequestPasswordReset::class)
             ->strictAuthorization()
             ->colors([
                 'primary' => Color::Indigo,

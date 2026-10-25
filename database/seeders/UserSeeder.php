@@ -26,7 +26,7 @@ class UserSeeder extends Seeder
             return;
         }
 
-        User::factory(10)
+        User::factory(1)
             ->unverified()
             ->create();
     }
