@@ -93,4 +93,14 @@ class User extends Authenticatable implements FilamentUser, HasFilamentName, Mus
     {
         return once(fn () => $this->email === config('filament.superadmin.email'));
     }
+
+    public function canImpersonate(): bool
+    {
+        return $this->isSuperAdmin();
+    }
+
+    public function canBeImpersonated(): bool
+    {
+        return ! $this->isSuperAdmin();
+    }
 }

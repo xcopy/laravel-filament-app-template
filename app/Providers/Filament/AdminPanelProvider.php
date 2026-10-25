@@ -13,6 +13,7 @@ use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Navigation\NavigationGroup;
 use Filament\Pages\Dashboard;
 use Filament\Panel;
 use Filament\PanelProvider;
@@ -43,7 +44,7 @@ class AdminPanelProvider extends PanelProvider
             ->emailChangeVerification()
             ->emailVerification()
             ->passwordReset(RequestPasswordReset::class)
-            ->strictAuthorization()
+            // ->strictAuthorization()
             ->colors([
                 'primary' => Color::Indigo,
             ])
@@ -57,6 +58,10 @@ class AdminPanelProvider extends PanelProvider
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
             */
+            ->navigationGroups([
+                NavigationGroup::make(__('Administration'))
+                    ->icon('fas-gear'),
+            ])
             ->pages([
                 Dashboard::class,
             ])
