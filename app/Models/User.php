@@ -20,6 +20,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Mattiverse\Userstamps\Traits\Userstamps;
 use Spatie\Permission\Traits\HasRoles;
 
 #[Fillable([
@@ -43,6 +44,7 @@ class User extends Authenticatable implements FilamentUser, HasFilamentName, Mus
     use HasRoles;
     use Notifiable;
     use SoftDeletes;
+    use Userstamps;
 
     protected $attributes = [
         'is_active' => true,
