@@ -11,7 +11,7 @@ trait HasVisibilityCondition
     protected static function getVisibilityCondition(int &$columns): Closure
     {
         return function (Model $record) use (&$columns): bool {
-            /** @var SoftDeletable $record */
+            /** @var SoftDeletable&Model $record */
             if ($record->trashed()) {
                 $columns++;
 

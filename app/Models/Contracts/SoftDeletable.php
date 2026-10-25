@@ -2,4 +2,8 @@
 
 namespace App\Models\Contracts;
 
-interface SoftDeletable {}
+interface SoftDeletable
+{
+    /** @return bool */
+    public function trashed();
+}
