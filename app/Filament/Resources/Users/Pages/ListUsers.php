@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Filament\Clusters\AccessControl\Resources\Users\Pages;
+namespace App\Filament\Resources\Users\Pages;
 
-use App\Filament\Clusters\AccessControl\Resources\Users\UserResource;
 use App\Filament\Concerns\HasAdministrationBreadcrumb;
 use App\Filament\Pages\Resources\ListRecords;
+use App\Filament\Resources\Users\UserResource;
 
 class ListUsers extends ListRecords
 {

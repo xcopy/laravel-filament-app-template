@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Filament\Clusters\AccessControl\Resources\Users;
+namespace App\Filament\Resources\Users;
 
-use App\Filament\Clusters\AccessControl\AccessControlCluster;
-use App\Filament\Clusters\AccessControl\Resources\Users\Pages\ListUsers;
-use App\Filament\Clusters\AccessControl\Resources\Users\Pages\ViewUser;
 use App\Filament\Resources\Resource;
+use App\Filament\Resources\Users\Pages\ListUsers;
+use App\Filament\Resources\Users\Pages\ViewUser;
 use App\Models\User;
+use BackedEnum;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
+use UnitEnum;
 
 // __('User')
 // __('Users')
@@ -20,7 +21,12 @@ class UserResource extends Resource
 
     protected static ?int $navigationSort = 1;
 
-    protected static ?string $cluster = AccessControlCluster::class;
+    protected static string|BackedEnum|null $navigationIcon = 'fas-users';
+
+    public static function getNavigationGroup(): string|UnitEnum|null
+    {
+        return __('Administration');
+    }
 
     public static function getPages(): array
     {

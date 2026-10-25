@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Clusters\AccessControl\Resources\Users\Tables;
+namespace App\Filament\Resources\Users\Tables;
 
 use App\Models\User;
 use Filament\Tables\Columns\IconColumn;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Clusters\AccessControl\Resources\Users\Schemas;
+namespace App\Filament\Resources\Users\Schemas;
 
 use App\Filament\Forms\Components\NameInput;
 use Filament\Forms\Components\Toggle;
