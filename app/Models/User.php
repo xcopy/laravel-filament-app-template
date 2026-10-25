@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Contracts\SoftDeletable;
 use App\Observers\UserObserver;
+use App\Policies\UserPolicy;
 use Database\Factories\UserFactory;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Models\Contracts\HasName as HasFilamentName;
@@ -13,6 +14,7 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Attributes\UseFactory;
+use Illuminate\Database\Eloquent\Attributes\UsePolicy;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -32,8 +34,9 @@ use Spatie\Permission\Traits\HasRoles;
     'password',
     'remember_token',
 ])]
-#[UseFactory(UserFactory::class)]
 #[ObservedBy(UserObserver::class)]
+#[UseFactory(UserFactory::class)]
+#[UsePolicy(UserPolicy::class)]
 class User extends Authenticatable implements FilamentUser, HasFilamentName, MustVerifyEmail, SoftDeletable
 {
     use HasFactory;

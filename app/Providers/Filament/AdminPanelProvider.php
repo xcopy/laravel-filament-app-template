@@ -236,7 +236,7 @@ class AdminPanelProvider extends PanelProvider
             ->emailChangeVerification()
             ->emailVerification()
             ->passwordReset(RequestPasswordReset::class)
-            // ->strictAuthorization()
+            ->strictAuthorization()
             ->colors([
                 'primary' => Color::Indigo,
             ])

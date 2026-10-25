@@ -3,6 +3,8 @@
 namespace App\Filament\Resources\Users\Schemas;
 
 use App\Filament\Forms\Components\NameInput;
+use App\Models\User;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Utilities\Set;
@@ -42,6 +44,12 @@ class UserForm
                         })
                         ->required()
                         ->unique(table: 'users'),
+                    Select::make('roles')
+                        ->label(__('Roles'))
+                        ->relationship('roles', 'name')
+                        ->multiple()
+                        ->preload()
+                        ->visible(fn (?User $record) => ! $record->isSuperAdmin()),
                     Toggle::make('is_active')
                         ->label(__('Active'))
                         ->inline(false)

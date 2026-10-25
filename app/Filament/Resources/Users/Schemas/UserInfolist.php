@@ -41,6 +41,10 @@ class UserInfolist
                             ->boolean()
                             ->columnSpan(1),
                     ]),
+                    TextEntry::make('roles.name')
+                        ->label(__('Roles'))
+                        ->badge()
+                        ->separator(', '),
                 ]),
                 Section::make()->schema([
                     TimestampsGrid::make($schema),

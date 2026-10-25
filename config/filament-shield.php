@@ -141,11 +141,19 @@ return [
 
     'policies' => [
         'path' => app_path('Policies'),
-        'merge' => true,
+        'merge' => false,
         'generate' => true,
         'methods' => [
-            'viewAny', 'view', 'create', 'update', 'delete', 'deleteAny', 'restore',
-            'forceDelete', 'forceDeleteAny', 'restoreAny', 'replicate', 'reorder',
+            'view',
+            'viewAny',
+            'create',
+            'update',
+            'delete',
+            'deleteAny',
+            'forceDelete',
+            'forceDeleteAny',
+            'restore',
+            'restoreAny',
         ],
         'single_parameter_methods' => [
             'viewAny',
@@ -188,11 +196,12 @@ return [
         'subject' => 'model',
         'manage' => [
             RoleResource::class => [
-                'viewAny',
                 'view',
+                'viewAny',
                 'create',
                 'update',
                 'delete',
+                'deleteAny',
             ],
         ],
         'exclude' => [
