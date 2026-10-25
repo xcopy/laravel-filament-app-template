@@ -2,6 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-if (app()->environment('local')) {
+if (app()->isLocal()) {
     Route::mailPreview();
 }

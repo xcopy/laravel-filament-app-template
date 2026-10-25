@@ -3,8 +3,6 @@
 namespace App\Models;
 
 use Database\Factories\UserFactory;
-use Filament\Auth\MultiFactor\Email\Concerns\InteractsWithEmailAuthentication;
-use Filament\Auth\MultiFactor\Email\Contracts\HasEmailAuthentication;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Models\Contracts\HasName as HasFilamentName;
 use Filament\Panel;
@@ -14,6 +12,7 @@ use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Attributes\UseFactory;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
@@ -31,9 +30,12 @@ use Spatie\Permission\Traits\HasRoles;
     'remember_token',
 ])]
 #[UseFactory(UserFactory::class)]
-class User extends Authenticatable implements FilamentUser, HasEmailAuthentication, HasFilamentName, MustVerifyEmail
+class User extends Authenticatable implements FilamentUser, HasFilamentName, MustVerifyEmail
 {
-    use HasFactory, HasRoles, InteractsWithEmailAuthentication, Notifiable;
+    use HasFactory;
+    use HasRoles;
+    use Notifiable;
+    use SoftDeletes;
 
     protected $attributes = [
         'is_active' => true,
@@ -81,5 +83,10 @@ class User extends Authenticatable implements FilamentUser, HasEmailAuthenticati
     public function getFilamentName(): string
     {
         return $this->display_label;
+    }
+
+    public function isSuperAdmin(): bool
+    {
+        return once(fn () => $this->email === config('filament.superadmin.email'));
     }
 }
