@@ -1,0 +1,11 @@
+<?php
+
+namespace Filament\Tables;
+
+/**
+ * @method $this timestampColumns()
+ * @method $this userstampColumns()
+ */
+class Table
+{
+}
