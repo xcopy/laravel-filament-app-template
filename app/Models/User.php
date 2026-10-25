@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Contracts\SoftDeletable;
 use App\Observers\UserObserver;
 use Database\Factories\UserFactory;
 use Filament\Models\Contracts\FilamentUser;
@@ -33,7 +34,7 @@ use Spatie\Permission\Traits\HasRoles;
 ])]
 #[UseFactory(UserFactory::class)]
 #[ObservedBy(UserObserver::class)]
-class User extends Authenticatable implements FilamentUser, HasFilamentName, MustVerifyEmail
+class User extends Authenticatable implements FilamentUser, HasFilamentName, MustVerifyEmail, SoftDeletable
 {
     use HasFactory;
     use HasRoles;
