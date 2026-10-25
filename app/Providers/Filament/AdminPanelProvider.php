@@ -2,9 +2,13 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Commands\FileGenerators\ClusterClassGenerator;
+use App\Filament\Commands\FileGenerators\Resources\ResourceClassGenerator;
 use App\Filament\Pages\Auth\EditProfile;
 use App\Filament\Pages\Auth\Login;
 use App\Filament\Pages\Auth\RequestPasswordReset;
+use Filament\Commands\FileGenerators\ClusterClassGenerator as FilamentClusterClassGenerator;
+use Filament\Commands\FileGenerators\Resources\ResourceClassGenerator as FilamentResourceClassGenerator;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -23,6 +27,11 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 
 class AdminPanelProvider extends PanelProvider
 {
+    public array $bindings = [
+        FilamentClusterClassGenerator::class => ClusterClassGenerator::class,
+        FilamentResourceClassGenerator::class => ResourceClassGenerator::class,
+    ];
+
     public function panel(Panel $panel): Panel
     {
         return $panel
@@ -42,9 +51,9 @@ class AdminPanelProvider extends PanelProvider
             ->sidebarCollapsibleOnDesktop()
             ->sidebarWidth('15rem')
             ->maxContentWidth('full')
-            /*
             ->discoverClusters(in: app_path('Filament/Clusters'), for: 'App\Filament\Clusters')
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
+            /*
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
             */
