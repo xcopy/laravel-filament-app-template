@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7ab570b2166b79dedf52dc60ca05bc24",
+    "content-hash": "f86236b54230bfe5006c49f802a48806",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -9439,6 +9439,87 @@
                 }
             ],
             "time": "2026-04-26T05:33:54+00:00"
+        },
+        {
+            "name": "xcopy/filament",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/xcopy/filament.git",
+                "reference": "71970e0fd4586980b730f87aa9942a52934ec40c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/xcopy/filament/zipball/71970e0fd4586980b730f87aa9942a52934ec40c",
+                "reference": "71970e0fd4586980b730f87aa9942a52934ec40c",
+                "shasum": ""
+            },
+            "require": {
+                "filament/forms": "^5.2",
+                "filament/infolists": "^5.2",
+                "filament/query-builder": "^5.2",
+                "filament/tables": "^5.2",
+                "illuminate/contracts": "^12.0 || ^13.0",
+                "illuminate/support": "^12.0 || ^13.0",
+                "php": "^8.3",
+                "spatie/laravel-package-tools": "^1.16"
+            },
+            "require-dev": {
+                "ergebnis/composer-normalize": "^2.54",
+                "larastan/larastan": "^3.0",
+                "laravel/pint": "^1.14",
+                "nunomaduro/collision": "^8.8",
+                "orchestra/testbench": "^10.0 || ^11.0",
+                "pestphp/pest": "^4.0",
+                "pestphp/pest-plugin-arch": "^4.0",
+                "pestphp/pest-plugin-laravel": "^4.0",
+                "phpstan/extension-installer": "^1.4",
+                "phpstan/phpstan-deprecation-rules": "^2.0",
+                "phpstan/phpstan-phpunit": "^2.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Jenishev\\Filament\\FilamentServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Jenishev\\Filament\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kairat Jenishev",
+                    "email": "kairat.jenishev@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Custom Filament components for forms, tables, and infolists with opinionated defaults for common use cases",
+            "homepage": "https://github.com/xcopy/filament",
+            "keywords": [
+                "filament",
+                "laravel",
+                "xcopy"
+            ],
+            "support": {
+                "issues": "https://github.com/xcopy/filament/issues",
+                "source": "https://github.com/xcopy/filament/tree/main"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/xcopy",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-10-25T15:42:19+00:00"
         }
     ],
     "packages-dev": [
@@ -15531,7 +15612,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": {
+        "xcopy/filament": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
