@@ -5,6 +5,10 @@ return [
     'directories' => [
         'app',
         'resources',
+        'vendor/laravel/framework/src/Illuminate/Auth/Notifications',
+        'vendor/laravel/framework/src/Illuminate/Mail/resources',
+        'vendor/laravel/framework/src/Illuminate/Notifications/resources',
+        'vendor/xcopy/filament/src',
     ],
 
     // Directories to exclude from search.

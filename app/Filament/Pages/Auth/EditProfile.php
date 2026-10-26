@@ -16,13 +16,13 @@ class EditProfile extends BaseEditProfile
                 Section::make()
                     ->schema([
                         TextInput::make('first_name')
-                            ->label(__('First name'))
+                            ->label(__('First Name'))
                             ->live(true)
                             ->required()
                             ->minLength(3)
                             ->maxLength(50),
                         TextInput::make('last_name')
-                            ->label(__('Last name'))
+                            ->label(__('Last Name'))
                             ->live(true)
                             ->required()
                             ->minLength(3)
