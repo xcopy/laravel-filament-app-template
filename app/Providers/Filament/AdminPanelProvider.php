@@ -22,6 +22,7 @@ use Filament\Actions\ExportAction;
 use Filament\Actions\ForceDeleteAction;
 use Filament\Actions\RestoreAction;
 use Filament\Actions\ViewAction;
+use Filament\Auth\MultiFactor\Email\EmailAuthentication;
 use Filament\Commands\FileGenerators\ClusterClassGenerator as FilamentClusterClassGenerator;
 use Filament\Commands\FileGenerators\Resources\ResourceClassGenerator as FilamentResourceClassGenerator;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
@@ -233,9 +234,12 @@ class AdminPanelProvider extends PanelProvider
             ->path('')
             ->login(Login::class)
             ->profile(EditProfile::class)
+            ->passwordReset(RequestPasswordReset::class)
             ->emailChangeVerification()
             ->emailVerification()
-            ->passwordReset(RequestPasswordReset::class)
+            ->multiFactorAuthentication([
+                EmailAuthentication::make()->codeExpiryMinutes(60),
+            ])
             ->strictAuthorization()
             ->colors([
                 'primary' => Color::Indigo,

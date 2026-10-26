@@ -6,6 +6,8 @@ use App\Models\Contracts\SoftDeletable;
 use App\Observers\UserObserver;
 use App\Policies\UserPolicy;
 use Database\Factories\UserFactory;
+use Filament\Auth\MultiFactor\Email\Concerns\InteractsWithEmailAuthentication;
+use Filament\Auth\MultiFactor\Email\Contracts\HasEmailAuthentication;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Models\Contracts\HasName as HasFilamentName;
 use Filament\Panel;
@@ -38,10 +40,11 @@ use Spatie\Permission\Traits\HasRoles;
 #[ObservedBy(UserObserver::class)]
 #[UseFactory(UserFactory::class)]
 #[UsePolicy(UserPolicy::class)]
-class User extends Authenticatable implements FilamentUser, HasFilamentName, MustVerifyEmail, SoftDeletable
+class User extends Authenticatable implements FilamentUser, HasEmailAuthentication, HasFilamentName, MustVerifyEmail, SoftDeletable
 {
     use HasFactory;
     use HasRoles;
+    use InteractsWithEmailAuthentication;
     use Notifiable;
     use SoftDeletes;
     use Userstamps;
