@@ -3,6 +3,10 @@
 namespace App\Providers\Filament;
 
 use App\Filament\Commands\FileGenerators\ClusterClassGenerator;
+use App\Filament\Commands\FileGenerators\Resources\Pages\ResourceCreateRecordPageClassGenerator;
+use App\Filament\Commands\FileGenerators\Resources\Pages\ResourceEditRecordPageClassGenerator;
+use App\Filament\Commands\FileGenerators\Resources\Pages\ResourceListRecordsPageClassGenerator;
+use App\Filament\Commands\FileGenerators\Resources\Pages\ResourceViewRecordPageClassGenerator;
 use App\Filament\Commands\FileGenerators\Resources\ResourceClassGenerator;
 use App\Filament\Pages\Auth\EditProfile;
 use App\Filament\Pages\Auth\Login;
@@ -24,6 +28,10 @@ use Filament\Actions\RestoreAction;
 use Filament\Actions\ViewAction;
 use Filament\Auth\MultiFactor\Email\EmailAuthentication;
 use Filament\Commands\FileGenerators\ClusterClassGenerator as FilamentClusterClassGenerator;
+use Filament\Commands\FileGenerators\Resources\Pages\ResourceCreateRecordPageClassGenerator as FilamentResourceCreateRecordPageClassGenerator;
+use Filament\Commands\FileGenerators\Resources\Pages\ResourceEditRecordPageClassGenerator as FilamentResourceEditRecordPageClassGenerator;
+use Filament\Commands\FileGenerators\Resources\Pages\ResourceListRecordsPageClassGenerator as FilamentResourceListRecordsPageClassGenerator;
+use Filament\Commands\FileGenerators\Resources\Pages\ResourceViewRecordPageClassGenerator as FilamentResourceViewRecordPageClassGenerator;
 use Filament\Commands\FileGenerators\Resources\ResourceClassGenerator as FilamentResourceClassGenerator;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Http\Middleware\Authenticate;
@@ -56,6 +64,10 @@ class AdminPanelProvider extends PanelProvider
     public array $bindings = [
         FilamentClusterClassGenerator::class => ClusterClassGenerator::class,
         FilamentResourceClassGenerator::class => ResourceClassGenerator::class,
+        FilamentResourceCreateRecordPageClassGenerator::class => ResourceCreateRecordPageClassGenerator::class,
+        FilamentResourceEditRecordPageClassGenerator::class => ResourceEditRecordPageClassGenerator::class,
+        FilamentResourceListRecordsPageClassGenerator::class => ResourceListRecordsPageClassGenerator::class,
+        FilamentResourceViewRecordPageClassGenerator::class => ResourceViewRecordPageClassGenerator::class,
     ];
 
     public function boot(): void
@@ -238,7 +250,7 @@ class AdminPanelProvider extends PanelProvider
             ->emailChangeVerification()
             ->emailVerification()
             ->multiFactorAuthentication([
-                EmailAuthentication::make()->codeExpiryMinutes(60),
+                EmailAuthentication::make(),
             ])
             ->strictAuthorization()
             ->colors([
@@ -250,37 +262,65 @@ class AdminPanelProvider extends PanelProvider
             ->maxContentWidth('full')
             ->discoverClusters(in: app_path('Filament/Clusters'), for: 'App\Filament\Clusters')
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
-            /*
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
-            */
-            ->navigationGroups([
-                NavigationGroup::make(__('Administration'))
-                    ->icon('fas-gear'),
-            ])
-            ->pages([
-                Dashboard::class,
-            ])
-            ->widgets([
-                AccountWidget::class,
-            ])
-            ->middleware([
-                EncryptCookies::class,
-                AddQueuedCookiesToResponse::class,
-                StartSession::class,
-                AuthenticateSession::class,
-                ShareErrorsFromSession::class,
-                PreventRequestForgery::class,
-                SubstituteBindings::class,
-                DisableBladeIconComponents::class,
-                DispatchServingFilamentEvent::class,
-            ])
-            ->plugins([
-                FilamentShieldPlugin::make()
-                    ->navigationGroup(__('Administration')),
-            ])
-            ->authMiddleware([
-                Authenticate::class,
-            ]);
+            ->navigationGroups($this->getPanelNavigationGroups())
+            ->pages($this->getPanelPages())
+            ->widgets($this->getPanelWidgets())
+            ->middleware($this->getPanelMiddlewares())
+            ->authMiddleware($this->getPanelAuthMiddlewares())
+            ->plugins($this->getPanelPlugins());
+    }
+
+    protected function getPanelNavigationGroups(): array
+    {
+        return [
+            NavigationGroup::make(__('Administration'))
+                ->icon('fas-gear'),
+        ];
+    }
+
+    protected function getPanelPages(): array
+    {
+        return [
+            Dashboard::class,
+        ];
+    }
+
+    protected function getPanelWidgets(): array
+    {
+        return [
+            AccountWidget::class,
+        ];
+    }
+
+    protected function getPanelPlugins(): array
+    {
+        return [
+            FilamentShieldPlugin::make()
+                ->navigationGroup(__('Administration')),
+        ];
+    }
+
+    protected function getPanelMiddlewares(): array
+    {
+        return [
+            EncryptCookies::class,
+            AddQueuedCookiesToResponse::class,
+            StartSession::class,
+            AuthenticateSession::class,
+            ShareErrorsFromSession::class,
+            PreventRequestForgery::class,
+            SubstituteBindings::class,
+            DisableBladeIconComponents::class,
+            DispatchServingFilamentEvent::class,
+        ];
+    }
+
+    protected function getPanelAuthMiddlewares(): array
+    {
+        return [
+            Authenticate::class,
+        ];
     }
 }
