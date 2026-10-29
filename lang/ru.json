@@ -27,6 +27,7 @@
     "Reset your password": "Сброс пароля",
     "Roles": "Роли",
     "State": "Статус",
+    "Taxonomies": "Справочники",
     "The :attribute may only contain letters, spaces, apostrophes, periods, and hyphens.": "Поле :attribute может содержать только буквы, пробелы, апострофы, точки и дефисы.",
     "This password reset link will expire in :count minutes.": "Срок действия ссылки для сброса пароля истекает через :count минут.",
     "Updated At": "Когда обновлено",
