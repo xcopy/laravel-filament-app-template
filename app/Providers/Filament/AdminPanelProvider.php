@@ -89,37 +89,26 @@ class AdminPanelProvider extends PanelProvider
         });
 
         AssociateAction::configureUsing(function (AssociateAction $action) {
-            $action
-                ->icon('fas-link')
-                ->associateAnother(false)
-                ->authorize('associate'); // by default
+            $action->icon('fas-link');
         });
 
         DissociateAction::configureUsing(function (DissociateAction $action) {
-            $action
-                ->icon('fas-link-slash')
-                ->authorize('dissociate'); // by default
+            $action->icon('fas-link-slash');
         });
 
         AttachAction::configureUsing(function (AttachAction $action) {
-            $action
-                ->icon('fas-paperclip')
-                ->attachAnother(false)
-                ->authorize('attach'); // by default
+            $action->icon('fas-paperclip');
         });
 
         DetachAction::configureUsing(function (DetachAction $action) {
-            $action
-                ->icon('fas-xmark')
-                ->authorize('detach'); // by default
+            $action->icon('fas-xmark');
         });
 
         ExportAction::configureUsing(function (ExportAction $action) {
             $action
                 ->label(__('Export to Excel'))
                 ->color('gray')
-                ->icon('fas-file-excel')
-                ->authorize('export');
+                ->icon('fas-file-excel');
         });
 
         CreateAction::configureUsing(function (CreateAction $action) {
