@@ -19,9 +19,9 @@ abstract class Policy
 
         return sprintf(
             '%s%s%s',
-            call_user_func([str(class_basename(static::class))->remove('Policy'), $case]),
+            call_user_func([str($method), $case]),
             $separator,
-            call_user_func([str($$method), $case])
+            call_user_func([str(class_basename(static::class))->remove('Policy'), $case])
         );
     }
 
