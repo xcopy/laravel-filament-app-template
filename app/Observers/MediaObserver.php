@@ -21,6 +21,10 @@ class MediaObserver
         activity()
             ->performedOn($media->model)
             ->causedBy($media->creator)
+            // TODO:
+            // The "media." prefix identifies the subject and helps distinguish these
+            // from other activity types that might also be called "created" or "deleted".
+            // Using event($event) would work, but would store only the generic label.
             ->event("media.$event")
             ->log(__(':event the file ":name"', [
                 'event' => __($event),
