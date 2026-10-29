@@ -2,7 +2,7 @@
 
 namespace App\Filament\Resources\Addresses\Schemas;
 
-use App\Enums\AddressTypeEnum;
+use App\Enums\AddressTypes;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -22,7 +22,7 @@ class AddressForm
                         Select::make('type')
                             ->label(__('Type'))
                             ->required()
-                            ->options(AddressTypeEnum::choices()),
+                            ->options(AddressTypes::choices()),
                         Toggle::make('is_primary')
                             ->label(__('Primary'))
                             ->required()

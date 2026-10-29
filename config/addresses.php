@@ -1,6 +1,6 @@
 <?php
 
-use App\Enums\AddressTypeEnum;
+use App\Enums\AddressTypes;
 
 return [
 
@@ -25,7 +25,7 @@ return [
     | The list of allowed address types. Used for validation.
     |
     */
-    'types' => AddressTypeEnum::values(),
+    'types' => AddressTypes::values(),
 
     /*
     |--------------------------------------------------------------------------
@@ -35,7 +35,7 @@ return [
     | The default address type when none is specified.
     |
     */
-    'default_type' => AddressTypeEnum::Work->value,
+    'default_type' => AddressTypes::Work->value,
 
     /*
     |--------------------------------------------------------------------------

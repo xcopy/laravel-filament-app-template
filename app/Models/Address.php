@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Addresses\Models\Address as BaseAddress;
-use App\Enums\AddressTypeEnum;
+use App\Enums\AddressTypes;
 use App\Models\Contracts\Blameable;
 use App\Models\Contracts\SoftDeletable;
 use App\Policies\AddressPolicy;
@@ -23,7 +23,7 @@ class Address extends BaseAddress implements Blameable, SoftDeletable
         return array_merge(
             parent::casts(),
             [
-                'type' => AddressTypeEnum::class,
+                'type' => AddressTypes::class,
                 'address_line_1' => AsTrimmedString::class,
                 'address_line_2' => AsTrimmedString::class,
                 'city' => AsTrimmedString::class,

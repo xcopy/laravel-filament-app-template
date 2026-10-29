@@ -3,7 +3,6 @@
 namespace App\Filament\Resources\Users;
 
 use App\Filament\RelationManagers\ActivitiesRelationManager;
-use App\Filament\RelationManagers\AddressesRelationManager;
 use App\Filament\Resources\Resource;
 use App\Filament\Resources\Users\Pages\ListUsers;
 use App\Filament\Resources\Users\Pages\ViewUser;
@@ -34,7 +33,6 @@ class UserResource extends Resource
     {
         return [
             ActivitiesRelationManager::class,
-            AddressesRelationManager::class,
         ];
     }
 
