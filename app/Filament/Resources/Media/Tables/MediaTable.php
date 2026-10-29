@@ -79,7 +79,7 @@ class MediaTable
                 Action::make('upload')
                     ->label(__('Create'))
                     ->icon('fas-plus')
-                    ->authorize('create')
+                    ->authorize('create:media')
                     ->modalHeading('') // empty string
                     ->schema(
                         collect(SpatieMediaLibraryFileUploads::make(get_class($ownerRecord)))
