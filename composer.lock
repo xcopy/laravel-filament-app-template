@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a7384a2d83fc28fcd4207c958ea7fa73",
+    "content-hash": "b2c576a238d0405ce7f22d3d58b1a0b0",
     "packages": [
         {
             "name": "aliziodev/laravel-taxonomy",
@@ -2546,6 +2546,68 @@
                 }
             ],
             "time": "2026-08-24T17:13:02+00:00"
+        },
+        {
+            "name": "joepages/laravel-addresses",
+            "version": "1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/joepages/laravel-addresses.git",
+                "reference": "e1b46f8f89e5c2f29fda05090f2f3dc4e116e702"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/joepages/laravel-addresses/zipball/e1b46f8f89e5c2f29fda05090f2f3dc4e116e702",
+                "reference": "e1b46f8f89e5c2f29fda05090f2f3dc4e116e702",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^11.0|^12.0|^13.0",
+                "illuminate/database": "^11.0|^12.0|^13.0",
+                "illuminate/support": "^11.0|^12.0|^13.0",
+                "php": "^8.2"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.6",
+                "orchestra/testbench": "^9.0|^10.0|^11.0",
+                "phpunit/phpunit": "^11.0|^12.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Addresses\\AddressesServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Addresses\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jose Pages",
+                    "homepage": "https://github.com/joepages"
+                }
+            ],
+            "description": "Polymorphic addresses package for Laravel - Attach N addresses to any model",
+            "homepage": "https://github.com/joepages/laravel-addresses",
+            "keywords": [
+                "addresses",
+                "laravel",
+                "multi-tenancy",
+                "polymorphic"
+            ],
+            "support": {
+                "issues": "https://github.com/joepages/laravel-addresses/issues",
+                "source": "https://github.com/joepages/laravel-addresses"
+            },
+            "time": "2026-08-27T19:31:16+00:00"
         },
         {
             "name": "kirschbaum-development/eloquent-power-joins",
@@ -10010,6 +10072,82 @@
                 }
             ],
             "time": "2026-10-25T15:42:19+00:00"
+        },
+        {
+            "name": "xcopy/laravel-support",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/xcopy/laravel-support.git",
+                "reference": "752a6834433ef163e566bb8b3392e54bf6abef78"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/xcopy/laravel-support/zipball/752a6834433ef163e566bb8b3392e54bf6abef78",
+                "reference": "752a6834433ef163e566bb8b3392e54bf6abef78",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^12.0 || ^13.0",
+                "illuminate/database": "^12.0 || ^13.0",
+                "illuminate/support": "^12.0 || ^13.0",
+                "php": "^8.3",
+                "spatie/laravel-package-tools": "^1.16"
+            },
+            "require-dev": {
+                "larastan/larastan": "^3.0",
+                "laravel/pint": "^1.14",
+                "nunomaduro/collision": "^8.8",
+                "orchestra/testbench": "^10.0.0||^9.0.0",
+                "pestphp/pest": "^4.0",
+                "pestphp/pest-plugin-arch": "^4.0",
+                "pestphp/pest-plugin-laravel": "^4.0",
+                "phpstan/extension-installer": "^1.4",
+                "phpstan/phpstan-deprecation-rules": "^2.0",
+                "phpstan/phpstan-phpunit": "^2.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Jenishev\\Laravel\\Support\\SupportServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Jenishev\\Laravel\\Support\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kairat Jenishev",
+                    "email": "kairat.jenishev@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Useful Laravel support utilities.",
+            "homepage": "https://github.com/xcopy/laravel-support",
+            "keywords": [
+                "laravel",
+                "support"
+            ],
+            "support": {
+                "issues": "https://github.com/xcopy/laravel-support/issues",
+                "source": "https://github.com/xcopy/laravel-support/tree/main"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/xcopy",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-10-29T06:01:35+00:00"
         }
     ],
     "packages-dev": [
@@ -16103,7 +16241,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "xcopy/filament": 20
+        "xcopy/filament": 20,
+        "xcopy/laravel-support": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

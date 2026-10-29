@@ -13,6 +13,7 @@
         "bezhansalleh/filament-shield": "^4.3",
         "filament/filament": "^5.10",
         "filament/spatie-laravel-media-library-plugin": "^5.10",
+        "joepages/laravel-addresses": "^1.2",
         "laravel/framework": "^13.17",
         "laravel/tinker": "^3.0",
         "owenvoke/blade-fontawesome": "^3.3",
@@ -24,7 +25,8 @@
         "staudenmeir/eloquent-has-many-deep": "^1.22",
         "stechstudio/filament-impersonate": "^5.6",
         "wildside/userstamps": "^4.0",
-        "xcopy/filament": "dev-main"
+        "xcopy/filament": "dev-main",
+        "xcopy/laravel-support": "dev-main"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^4.4",
