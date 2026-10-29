@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Users;
 
+use App\Filament\RelationManagers\ActivitiesRelationManager;
 use App\Filament\Resources\Resource;
 use App\Filament\Resources\Users\Pages\ListUsers;
 use App\Filament\Resources\Users\Pages\ViewUser;
@@ -26,6 +27,13 @@ class UserResource extends Resource
     public static function getNavigationGroup(): string|UnitEnum|null
     {
         return __('Administration');
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            ActivitiesRelationManager::class,
+        ];
     }
 
     public static function getPages(): array

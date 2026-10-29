@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\LogsActivity;
+use App\Models\Contracts\Blameable;
+use App\Models\Contracts\HasActivityLog;
 use App\Models\Contracts\SoftDeletable;
 use App\Observers\UserObserver;
 use App\Policies\UserPolicy;
@@ -29,6 +32,7 @@ use Spatie\Permission\Traits\HasRoles;
     'first_name',
     'last_name',
     'email',
+    'email_verified_at',
     'password',
     'is_active',
     'has_email_authentication',
@@ -40,11 +44,12 @@ use Spatie\Permission\Traits\HasRoles;
 #[ObservedBy(UserObserver::class)]
 #[UseFactory(UserFactory::class)]
 #[UsePolicy(UserPolicy::class)]
-class User extends Authenticatable implements FilamentUser, HasEmailAuthentication, HasFilamentName, MustVerifyEmail, SoftDeletable
+class User extends Authenticatable implements Blameable, FilamentUser, HasActivityLog, HasEmailAuthentication, HasFilamentName, MustVerifyEmail, SoftDeletable
 {
     use HasFactory;
     use HasRoles;
     use InteractsWithEmailAuthentication;
+    use LogsActivity;
     use Notifiable;
     use SoftDeletes;
     use Userstamps;
@@ -64,6 +69,18 @@ class User extends Authenticatable implements FilamentUser, HasEmailAuthenticati
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+        ];
+    }
+
+    public static function getAttributeLabels(): array
+    {
+        return [
+            'first_name' => __('First Name'),
+            'last_name' => __('Last Name'),
+            'email' => __('Email'),
+            'email_verified_at' => __('Email Verified'),
+            'password' => __('Password'),
+            'is_active' => __('Active'),
         ];
     }
 

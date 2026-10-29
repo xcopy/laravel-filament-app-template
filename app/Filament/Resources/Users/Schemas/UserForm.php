@@ -4,8 +4,10 @@ namespace App\Filament\Resources\Users\Schemas;
 
 use App\Filament\Forms\Components\NameInput;
 use App\Models\User;
+use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Toggle;
+use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Utilities\Set;
 use Filament\Schemas\Schema;
@@ -49,12 +51,16 @@ class UserForm
                         ->relationship('roles', 'name')
                         ->multiple()
                         ->preload()
-                        ->visible(fn (?User $record) => ! $record->isSuperAdmin()),
-                    Toggle::make('is_active')
-                        ->label(__('Active'))
-                        ->inline(false)
-                        ->required()
-                        ->default(true),
+                        ->visible(fn (?User $record) => ! $record?->isSuperAdmin()),
+                    Grid::make(['md' => 2])->schema([
+                        Toggle::make('is_active')
+                            ->label(__('Active'))
+                            ->inline(false)
+                            ->required()
+                            ->default(true),
+                        DatePicker::make('email_verified_at')
+                            ->label(__('Email Verified')),
+                    ]),
                 ])->columnSpanFull(),
             ]);
     }
