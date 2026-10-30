@@ -15,8 +15,13 @@ class RoleSeeder extends Seeder
      */
     public function run(): void
     {
-        foreach (['standard admin', 'advanced admin'] as $name) {
-            Role::createQuietly(compact('name'));
+        $roles = [
+            'standard admin',
+            'advanced admin',
+        ];
+
+        foreach ($roles as $role) {
+            Role::findOrCreate($role);
         }
     }
 }
