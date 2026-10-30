@@ -14,7 +14,7 @@ class ListTaxonomies extends ListRecords
     // have to force redirect to update a tree
     public function getDefaultActionSuccessRedirectUrl(Action $action): ?string
     {
-        /** @var class-string<resource> $resource */
+        /** @var class-string<Resource> $resource */
         $resource = $this->getResource();
 
         return $resource::getUrl('index');

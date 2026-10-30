@@ -7,6 +7,9 @@
         "concat_space": {
             "spacing": "one"
         },
+        "phpdoc_types": {
+            "groups": ["simple", "alias"]
+        },
         "single_trait_insert_per_statement": true
     }
 }
