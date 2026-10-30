@@ -14,9 +14,10 @@ class UserSeeder extends Seeder
     {
         User::withoutEvents(function () {
             User::firstOrCreate([
+                'email' => config('filament.superadmin.email'),
+            ], [
                 'first_name' => config('filament.superadmin.first_name'),
                 'last_name' => config('filament.superadmin.last_name'),
-                'email' => config('filament.superadmin.email'),
                 'email_verified_at' => now(),
                 'password' => config('filament.superadmin.password'),
             ]);
