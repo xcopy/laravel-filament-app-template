@@ -2,8 +2,9 @@
 
 namespace App\Filament\Pages\Auth;
 
+use App\Filament\Forms\Components\NameInput;
+use App\Rules\PersonNameRule;
 use Filament\Auth\Pages\EditProfile as BaseEditProfile;
-use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
@@ -15,18 +16,12 @@ class EditProfile extends BaseEditProfile
             ->components([
                 Section::make()
                     ->schema([
-                        TextInput::make('first_name')
+                        NameInput::make('first_name')
                             ->label(__('First Name'))
-                            ->live(true)
-                            ->required()
-                            ->minLength(3)
-                            ->maxLength(50),
-                        TextInput::make('last_name')
+                            ->rule(new PersonNameRule),
+                        NameInput::make('last_name')
                             ->label(__('Last Name'))
-                            ->live(true)
-                            ->required()
-                            ->minLength(3)
-                            ->maxLength(50),
+                            ->rule(new PersonNameRule),
                         $this->getEmailFormComponent(),
                         $this->getPasswordFormComponent(),
                         $this->getPasswordConfirmationFormComponent(),

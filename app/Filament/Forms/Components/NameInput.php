@@ -13,7 +13,7 @@ class NameInput extends BaseNameInput
         $this
             ->live(true)
             ->required()
-            ->minLength(2)
+            ->minLength(1)
             ->maxLength(50);
     }
 }

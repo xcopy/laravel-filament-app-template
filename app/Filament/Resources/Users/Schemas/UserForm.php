@@ -4,7 +4,7 @@ namespace App\Filament\Resources\Users\Schemas;
 
 use App\Filament\Forms\Components\NameInput;
 use App\Models\User;
-use Closure;
+use App\Rules\PersonNameRule;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Toggle;
@@ -19,13 +19,7 @@ class UserForm
     public static function configure(Schema $schema): Schema
     {
         $nameInput = fn (string $name) => NameInput::make($name)
-            ->rule([
-                function (string $attribute, mixed $value, Closure $fail) {
-                    if (! preg_match('/^[\p{L}\p{M}\s\'.\-]+$/u', $value)) {
-                        $fail(__('The :attribute may only contain letters, spaces, apostrophes, periods, and hyphens.'));
-                    }
-                },
-            ]);
+            ->rule(new PersonNameRule);
 
         return $schema
             ->components([
