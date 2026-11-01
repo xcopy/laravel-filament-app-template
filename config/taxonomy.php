@@ -1,6 +1,6 @@
 <?php
 
-use Aliziodev\LaravelTaxonomy\Enums\TaxonomyType;
+use App\Enums\TaxonomyType;
 use App\Models\Taxonomy;
 
 return [
@@ -65,7 +65,7 @@ return [
     | organize them based on their purpose in your application.
     |
     */
-    'types' => collect(TaxonomyType::cases())->pluck('value')->toArray(),
+    'types' => TaxonomyType::values(),
 
     /*
     |--------------------------------------------------------------------------
