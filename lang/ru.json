@@ -57,6 +57,7 @@
     "Taxonomy Name": "Название",
     "The :attribute may only contain letters, spaces, apostrophes, periods, and hyphens.": "Поле :attribute может содержать только буквы, пробелы, апострофы, точки и дефисы.",
     "This password reset link will expire in :count minutes.": "Срок действия ссылки для сброса пароля истекает через :count минут.",
+    "This taxonomy name is already been taken.": "Такое значение поля название уже существует.",
     "Type": "Тип",
     "updated": "обновил(-а)",
     "Updated At": "Когда обновлено",
