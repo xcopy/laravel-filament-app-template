@@ -82,7 +82,7 @@ class MediaTable
                     ->authorize('create:media')
                     ->modalHeading('') // empty string
                     ->schema(
-                        collect(SpatieMediaLibraryFileUploads::make(get_class($ownerRecord)))
+                        collect(SpatieMediaLibraryFileUploads::make($ownerRecord::class))
                             ->map(fn (SpatieMediaLibraryFileUpload $fileUpload) => $fileUpload
                                 ->model($ownerRecord)
                                 ->filterMediaUsing(fn () => Collection::make())

@@ -11,8 +11,8 @@
         "php": "^8.3",
         "aliziodev/laravel-taxonomy": "^2.12",
         "bezhansalleh/filament-shield": "^4.3",
-        "filament/filament": "^5.10",
-        "filament/spatie-laravel-media-library-plugin": "^5.10",
+        "filament/filament": "^5.11",
+        "filament/spatie-laravel-media-library-plugin": "^5.11",
         "joepages/laravel-addresses": "^1.2",
         "laravel/framework": "^13.17",
         "laravel/tinker": "^3.0",
@@ -32,6 +32,7 @@
     "require-dev": {
         "barryvdh/laravel-debugbar": "^4.4",
         "barryvdh/laravel-ide-helper": "^3.7",
+        "driftingly/rector-laravel": "^2.7",
         "ergebnis/composer-normalize": "^2.54",
         "fakerphp/faker": "^1.23",
         "kkomelin/laravel-translatable-string-exporter": "^1.26",
@@ -45,6 +46,7 @@
         "nunomaduro/collision": "^8.6",
         "pestphp/pest": "^4.7",
         "pestphp/pest-plugin-laravel": "^4.1",
+        "rector/rector": "^2.8",
         "spatie/laravel-mail-preview": "^6.2"
     },
     "minimum-stability": "dev",

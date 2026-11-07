@@ -30,7 +30,7 @@ class SendExceptionNotification
         if ($exception instanceof Throwable) {
             // Extract only serializable exception data into a plain array structure
             $context['exception'] = [
-                'class' => get_class($exception),
+                'class' => $exception::class,
                 'message' => $exception->getMessage(),
                 'code' => $exception->getCode(),
                 'file' => $exception->getFile(),
