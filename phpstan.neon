@@ -6,6 +6,6 @@ parameters:
     paths:
         - app/
     stubFiles:
-        - stubs/Filament/Tables/Table.stub
+        - stubs/macros.php
     level: 5
     treatPhpDocTypesAsCertain: false
