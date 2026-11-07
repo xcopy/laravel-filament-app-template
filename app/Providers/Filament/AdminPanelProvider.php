@@ -242,6 +242,8 @@ class AdminPanelProvider extends PanelProvider
             ->multiFactorAuthentication([
                 EmailAuthentication::make(),
             ])
+            ->databaseNotifications()
+            ->databaseNotificationsPollingInterval('10s')
             ->strictAuthorization()
             ->colors([
                 'primary' => Color::Indigo,
@@ -291,7 +293,14 @@ class AdminPanelProvider extends PanelProvider
     {
         return [
             FilamentShieldPlugin::make()
-                ->navigationGroup(__('Administration')),
+                ->navigationGroup(__('Administration'))
+                ->gridColumns([
+                    'default' => 1,
+                    'sm' => 2,
+                    'lg' => 3,
+                ])
+                ->sectionColumnSpan(1)
+                ->resourceCheckboxListColumns(['default' => 1]),
         ];
     }
 
