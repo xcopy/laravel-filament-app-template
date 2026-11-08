@@ -3,8 +3,8 @@
 namespace App\Filament\Resources\Users\Schemas;
 
 use App\Filament\Forms\Components\NameInput;
-use App\Models\User;
 use App\Rules\PersonNameRule;
+use BezhanSalleh\FilamentShield\Support\Utils;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Toggle;
@@ -12,6 +12,7 @@ use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Utilities\Set;
 use Filament\Schemas\Schema;
+use Illuminate\Database\Eloquent\Builder;
 use Jenishev\Filament\Forms\Components\EmailInput;
 
 class UserForm
@@ -43,10 +44,12 @@ class UserForm
                         ->unique(table: 'users'),
                     Select::make('roles')
                         ->label(__('Roles'))
-                        ->relationship('roles', 'name')
+                        ->relationship(
+                            'roles',
+                            'name',
+                            modifyQueryUsing: fn (Builder $query) => $query->whereNot('name', Utils::getSuperAdminName()))
                         ->multiple()
-                        ->preload()
-                        ->visible(fn (?User $record) => ! $record?->isSuperAdmin()),
+                        ->preload(),
                     Grid::make(['md' => 2])->schema([
                         Toggle::make('is_active')
                             ->label(__('Active'))
