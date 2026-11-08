@@ -8,6 +8,7 @@ use App\Models\Contracts\HasActivityLog;
 use App\Models\Contracts\SoftDeletable;
 use App\Observers\UserObserver;
 use App\Policies\UserPolicy;
+use BezhanSalleh\FilamentShield\Support\Utils;
 use Database\Factories\UserFactory;
 use Filament\Auth\MultiFactor\Email\Concerns\InteractsWithEmailAuthentication;
 use Filament\Auth\MultiFactor\Email\Contracts\HasEmailAuthentication;
@@ -116,7 +117,7 @@ class User extends Authenticatable implements Blameable, FilamentUser, HasActivi
 
     public function isSuperAdmin(): bool
     {
-        return once(fn () => $this->email === config('filament.superadmin.email'));
+        return $this->hasRole(Utils::getSuperAdminName());
     }
 
     public function canImpersonate(): bool
