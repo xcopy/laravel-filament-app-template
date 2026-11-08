@@ -29,7 +29,8 @@ class UsersTable
                 TextColumn::make('roles.name')
                     ->label(__('Roles'))
                     ->badge()
-                    ->separator(', '),
+                    ->separator(', ')
+                    ->formatStateUsing(fn (Role $relatedRecord) => $relatedRecord->translated_name),
                 IconColumn::make('email_verified_at')
                     ->label(__('Email Verified'))
                     ->getStateUsing(fn (User $record) => $record->hasVerifiedEmail())

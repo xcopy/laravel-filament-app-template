@@ -4,6 +4,7 @@ namespace App\Filament\Resources\Users\Schemas;
 
 use App\Filament\Schemas\Components\TimestampsGrid;
 use App\Filament\Schemas\Components\UserstampsGrid;
+use App\Models\Role;
 use Filament\Infolists\Components\IconEntry;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Components\Grid;
@@ -44,7 +45,8 @@ class UserInfolist
                     TextEntry::make('roles.name')
                         ->label(__('Roles'))
                         ->badge()
-                        ->separator(', '),
+                        ->separator(', ')
+                        ->formatStateUsing(fn (Role $relatedRecord) => $relatedRecord->translated_name),
                 ]),
                 Section::make()->schema([
                     TimestampsGrid::make($schema),

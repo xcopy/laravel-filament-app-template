@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Attributes\UsePolicy;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Spatie\Permission\Models\Role as BaseRole;
 
+/**
+ * @property-read string $translated_name
+ */
 #[UsePolicy(RolePolicy::class)]
 class Role extends BaseRole
 {
