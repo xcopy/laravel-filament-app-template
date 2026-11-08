@@ -72,7 +72,7 @@ return [
 
     'super_admin' => [
         'enabled' => true,
-        'name' => 'super admin',
+        'name' => 'super_admin',
         'define_via_gate' => true,
         'intercept_gate' => 'before',
     ],

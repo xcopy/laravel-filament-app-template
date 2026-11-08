@@ -3,26 +3,51 @@
 namespace App\Policies;
 
 use App\Models\User;
+use App\Support\PermissionName;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Database\Eloquent\Model;
+use LogicException;
 
 abstract class Policy
 {
     use HandlesAuthorization;
 
+    /** @var class-string<Model>|null */
+    protected static ?string $model = null;
+
+    /** @var array<class-string, class-string<Model>> */
+    private static array $resolved = [];
+
+    /** @return class-string<Model> */
+    protected static function guessModel(): string
+    {
+        $name = str(class_basename(static::class))->beforeLast('Policy')->toString();
+
+        foreach (['App\\Models\\', 'App\\'] as $namespace) {
+            if (class_exists($class = $namespace . $name)) {
+                return $class;
+            }
+        }
+
+        throw new LogicException(sprintf(
+            'Cannot guess model for policy [%s]. Set protected static ?string $model.',
+            static::class,
+        ));
+    }
+
     protected function ability(string $method): string
     {
-        $config = config('filament-shield.permissions');
+        return PermissionName::make($method, static::model());
+    }
 
-        $separator = $config['separator'];
-        $case = $config['case'];
+    /** @return class-string<Model> */
+    public static function model(): string
+    {
+        if (static::$model !== null) {
+            return static::$model;
+        }
 
-        return sprintf(
-            '%s%s%s',
-            call_user_func([str($method), $case]),
-            $separator,
-            call_user_func([str(class_basename(static::class))->remove('Policy'), $case])
-        );
+        return self::$resolved[static::class] ??= static::guessModel();
     }
 
     public function viewAny(User $user): bool
