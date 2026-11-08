@@ -6,7 +6,6 @@ use App\Models\Contracts\HasActivityLog;
 use App\Policies\ActivityPolicy;
 use Illuminate\Database\Eloquent\Attributes\UsePolicy;
 use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Support\Facades\Auth;
 use Spatie\Activitylog\Models\Activity as BaseActivity;
 
 #[UsePolicy(ActivityPolicy::class)]
@@ -15,8 +14,7 @@ class Activity extends BaseActivity
     protected static function booted(): void
     {
         static::saving(function (Activity $activity) {
-            /** @var User $user */
-            $user = Auth::user();
+            $user = currentUser();
             $activity->causer_id = $user?->getKey();
             $activity->causer_type = $user ? $user::class : null;
         });

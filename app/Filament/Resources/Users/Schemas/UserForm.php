@@ -49,6 +49,7 @@ class UserForm
                     PasswordInput::make()
                         ->revealable(true)
                         ->rule(Password::default())
+                        ->required()
                         ->autocomplete('new-password')
                         ->visibleOn(Operation::Create),
                     Select::make('roles')

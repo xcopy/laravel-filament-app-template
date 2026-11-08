@@ -10,7 +10,6 @@ use App\Models\User;
 use BackedEnum;
 use BezhanSalleh\FilamentShield\Support\Utils;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\Facades\Auth;
 use UnitEnum;
 
 // __('User')
@@ -49,10 +48,7 @@ class UserResource extends Resource
     {
         $query = parent::getEloquentQuery();
 
-        /** @var User $user */
-        $user = Auth::user();
-
-        if (! $user->isSuperAdmin()) {
+        if (! currentUser()->isSuperAdmin()) {
             $query->whereDoesntHave(
                 'roles',
                 fn ($q) => $q->where('name', Utils::getSuperAdminName())
