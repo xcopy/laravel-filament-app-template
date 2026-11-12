@@ -155,4 +155,10 @@ return [
         'password' => env('FILAMENT_SUPERADMIN_PASSWORD', 'password'),
     ],
 
+    'default_currency' => env('FILAMENT_DEFAULT_CURRENCY', 'KGS'),
+    'default_date_display_format' => env('FILAMENT_DEFAULT_DATE_DISPLAY_FORMAT', 'd M, Y'),
+    'default_date_time_display_format' => env('FILAMENT_DEFAULT_DATE_TIME_DISPLAY_FORMAT', 'd M, Y H:i'),
+    'default_time_display_format' => env('FILAMENT_DEFAULT_TIME_DISPLAY_FORMAT', 'H:i'),
+    'timezone' => env('FILAMENT_TIMEZONE', 'Asia/Bishkek'),
+
 ];

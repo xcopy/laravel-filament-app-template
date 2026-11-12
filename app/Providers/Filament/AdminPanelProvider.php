@@ -46,6 +46,7 @@ use Filament\Schemas\Components\Utilities\Set;
 use Filament\Support\Colors\Color;
 use Filament\Support\Enums\IconSize;
 use Filament\Support\Enums\Width;
+use Filament\Support\Facades\FilamentTimezone;
 use Filament\Tables\Columns\Column;
 use Filament\Tables\Enums\FiltersLayout;
 use Filament\Tables\Table;
@@ -72,6 +73,8 @@ class AdminPanelProvider extends PanelProvider
 
     public function boot(): void
     {
+        FilamentTimezone::set(config('filament.timezone'));
+
         $this->configureActions();
         $this->configureFormInputs();
         $this->configurePlaceholder();
