@@ -2,8 +2,7 @@
 
 namespace App\Filament\Resources\Users\Schemas;
 
-use App\Filament\Schemas\Components\TimestampsGrid;
-use App\Filament\Schemas\Components\UserstampsGrid;
+use App\Filament\Schemas\Components\AuditSection;
 use App\Models\Role;
 use Filament\Infolists\Components\IconEntry;
 use Filament\Infolists\Components\TextEntry;
@@ -48,10 +47,7 @@ class UserInfolist
                         ->separator(', ')
                         ->formatStateUsing(fn (Role $relatedRecord) => $relatedRecord->translated_name),
                 ]),
-                Section::make()->schema([
-                    TimestampsGrid::make($schema),
-                    UserstampsGrid::make($schema),
-                ]),
+                AuditSection::make($schema),
             ]);
     }
 }
